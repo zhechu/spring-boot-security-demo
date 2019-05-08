@@ -11,11 +11,11 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.wise.async.listener.queue.demo.handler.CustomAuthenticationFailureHandler;
-import com.wise.async.listener.queue.demo.handler.CustomAuthenticationSuccessHandler;
+import com.wise.async.listener.queue.demo.security.CustomAuthenticationFailureHandler;
+import com.wise.async.listener.queue.demo.security.CustomAuthenticationSuccessHandler;
 
 /**
- * 安全配置主类
+ * 安全配置类
  * @author lingyuwang
  *
  */

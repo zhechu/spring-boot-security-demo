@@ -1,4 +1,4 @@
-package com.wise.async.listener.queue.demo.handler;
+package com.wise.async.listener.queue.demo.security;
 
 import java.io.IOException;
 
