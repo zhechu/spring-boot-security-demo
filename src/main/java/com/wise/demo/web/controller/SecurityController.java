@@ -1,4 +1,4 @@
-package com.wise.async.listener.queue.demo.web.controller;
+package com.wise.demo.web.controller;
 
 import java.io.IOException;
 
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.wise.async.listener.queue.demo.vo.ResultVo;
+import com.wise.demo.vo.ResultVo;
 
 import lombok.extern.slf4j.Slf4j;
 

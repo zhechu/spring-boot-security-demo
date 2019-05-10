@@ -1,4 +1,4 @@
-package com.wise.async.listener.queue.demo.security;
+package com.wise.demo.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;

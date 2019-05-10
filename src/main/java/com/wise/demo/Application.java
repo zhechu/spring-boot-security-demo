@@ -1,4 +1,4 @@
-package com.wise.async.listener.queue.demo;
+package com.wise.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

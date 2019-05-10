@@ -1,4 +1,4 @@
-package com.wise.async.listener.queue.demo.vo;
+package com.wise.demo.vo;
 
 import org.springframework.http.HttpStatus;
 

@@ -1,4 +1,4 @@
-package com.wise.async.listener.queue.demo.web.controller;
+package com.wise.demo.web.controller;
 
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.RequestMapping;
