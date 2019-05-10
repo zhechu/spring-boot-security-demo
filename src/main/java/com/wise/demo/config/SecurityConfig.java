@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.wise.async.listener.queue.demo.config;
+package com.wise.demo.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -11,8 +11,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.wise.async.listener.queue.demo.security.CustomAuthenticationFailureHandler;
-import com.wise.async.listener.queue.demo.security.CustomAuthenticationSuccessHandler;
+import com.wise.demo.security.CustomAuthenticationFailureHandler;
+import com.wise.demo.security.CustomAuthenticationSuccessHandler;
 
 /**
  * 安全配置类

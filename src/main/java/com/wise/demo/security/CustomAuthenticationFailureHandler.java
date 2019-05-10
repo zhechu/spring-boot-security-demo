@@ -1,4 +1,4 @@
-package com.wise.async.listener.queue.demo.security;
+package com.wise.demo.security;
 
 import java.io.IOException;
 
@@ -13,7 +13,7 @@ import org.springframework.security.web.authentication.AuthenticationFailureHand
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.wise.async.listener.queue.demo.vo.ResultVo;
+import com.wise.demo.vo.ResultVo;
 
 import lombok.extern.slf4j.Slf4j;
 
