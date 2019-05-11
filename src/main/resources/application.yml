@@ -6,6 +6,8 @@ application:
     code:
       image:
         url: /authentication/form
+      sms:
+        url: /authentication/mobile
 
 spring:
   datasource:

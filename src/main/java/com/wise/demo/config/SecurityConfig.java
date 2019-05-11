@@ -15,6 +15,7 @@ import org.springframework.security.web.authentication.preauth.AbstractPreAuthen
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
+import com.wise.demo.authentication.mobile.SmsCodeAuthenticationSecurityConfig;
 import com.wise.demo.security.CustomAuthenticationFailureHandler;
 import com.wise.demo.security.CustomAuthenticationSuccessHandler;
 import com.wise.demo.validate.code.ValidateCodeFilter;
@@ -46,6 +47,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private SecurityProperties securityProperties;
 	
+	@Autowired
+	private SmsCodeAuthenticationSecurityConfig smsCodeAuthenticationSecurityConfig;
+	
 	/**
 	 * 记住我功能的 token 存取器配置
 	 * @return
@@ -71,7 +75,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		
 //		http.httpBasic() // 开启 http basic 认证
-		http.addFilterBefore(validateCodeFilter, AbstractPreAuthenticatedProcessingFilter.class) // 验证码过滤器
+		http.apply(smsCodeAuthenticationSecurityConfig) // 短信验证码配置
+			.and()
+			.addFilterBefore(validateCodeFilter, AbstractPreAuthenticatedProcessingFilter.class) // 验证码过滤器
 			.formLogin() // 开启表单认证
 			    .loginPage(SecurityConstants.DEFAULT_UNAUTHENTICATION_URL) // 未登录的处理
 			    .loginProcessingUrl(SecurityConstants.DEFAULT_SIGN_IN_PROCESSING_URL_FORM) // 登录处理 url

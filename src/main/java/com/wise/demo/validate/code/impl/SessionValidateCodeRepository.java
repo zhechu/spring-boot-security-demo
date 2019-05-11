@@ -27,9 +27,6 @@ public class SessionValidateCodeRepository implements ValidateCodeRepository {
 	 */
 	private SessionStrategy sessionStrategy = new HttpSessionSessionStrategy();
 
-	/* (non-Javadoc)
-	 * @see com.imooc.security.core.validate.code.ValidateCodeRepository#save(org.springframework.web.context.request.ServletWebRequest, com.imooc.security.core.validate.code.ValidateCode, com.imooc.security.core.validate.code.ValidateCodeType)
-	 */
 	@Override
 	public void save(ServletWebRequest request, ValidateCode code, ValidateCodeType validateCodeType) {
 		sessionStrategy.setAttribute(request, getSessionKey(request, validateCodeType), code);
@@ -45,17 +42,11 @@ public class SessionValidateCodeRepository implements ValidateCodeRepository {
 		return SESSION_KEY_PREFIX + validateCodeType.toString().toUpperCase();
 	}
 
-	/* (non-Javadoc)
-	 * @see com.imooc.security.core.validate.code.ValidateCodeRepository#get(org.springframework.web.context.request.ServletWebRequest, com.imooc.security.core.validate.code.ValidateCodeType)
-	 */
 	@Override
 	public ValidateCode get(ServletWebRequest request, ValidateCodeType validateCodeType) {
 		return (ValidateCode) sessionStrategy.getAttribute(request, getSessionKey(request, validateCodeType));
 	}
 
-	/* (non-Javadoc)
-	 * @see com.imooc.security.core.validate.code.ValidateCodeRepository#remove(org.springframework.web.context.request.ServletWebRequest, com.imooc.security.core.validate.code.ValidateCodeType)
-	 */
 	@Override
 	public void remove(ServletWebRequest request, ValidateCodeType codeType) {
 		sessionStrategy.removeAttribute(request, getSessionKey(request, codeType));

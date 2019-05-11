@@ -29,13 +29,6 @@ public class ImageValidateCodeGenerator implements ValidateCodeGenerator {
 	 */
 	private SecurityProperties securityProperties;
 	
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.imooc.security.core.validate.code.ValidateCodeGenerator#generate(org.
-	 * springframework.web.context.request.ServletWebRequest)
-	 */
 	@Override
 	public ImageValidateCode generate(ServletWebRequest request) {
 		int width = ServletRequestUtils.getIntParameter(request.getRequest(), "width",

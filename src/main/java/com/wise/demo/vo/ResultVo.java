@@ -2,12 +2,17 @@ package com.wise.demo.vo;
 
 import org.springframework.http.HttpStatus;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * 统一 Restful 数据返回格式
  * @author lingyuwang
  *
  * @param <T>
  */
+@Setter
+@Getter
 public class ResultVo<T> {
 
 	/**
@@ -42,30 +47,6 @@ public class ResultVo<T> {
 		this.setCode(code);
 		this.setMessage(message);
 		this.setData(data);
-	}
-
-	public int getCode() {
-		return code;
-	}
-
-	public void setCode(int code) {
-		this.code = code;
-	}
-
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
-	}
-
-	public T getData() {
-		return data;
-	}
-
-	public void setData(T data) {
-		this.data = data;
 	}
 
 	/**
