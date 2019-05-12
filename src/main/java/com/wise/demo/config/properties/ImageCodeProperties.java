@@ -25,7 +25,7 @@ public class ImageCodeProperties {
 	/**
 	 * 验证码长度
 	 */
-	private int length = 6;
+	private int length = 4;
 	
 	/**
 	 * 过期时间

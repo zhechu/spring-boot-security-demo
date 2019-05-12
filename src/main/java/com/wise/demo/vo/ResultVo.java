@@ -58,10 +58,10 @@ public class ResultVo<T> {
 		return new ResultVo<T>();
 	}
 
-	public static <T> ResultVo<T> buildExceptionResult(String messages) {
-		return new ResultVo<T>(HttpStatus.INTERNAL_SERVER_ERROR.value(), messages);
+	public static <T> ResultVo<T> buildExceptionResult(String message) {
+		return new ResultVo<T>(HttpStatus.INTERNAL_SERVER_ERROR.value(), message);
 	}
-
+	
 	/**
 	 * 构建一个包含数据的成功结果
 	 * 

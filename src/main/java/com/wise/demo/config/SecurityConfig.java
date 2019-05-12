@@ -11,9 +11,12 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.security.web.authentication.preauth.AbstractPreAuthenticatedProcessingFilter;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
+import org.springframework.security.web.session.InvalidSessionStrategy;
+import org.springframework.security.web.session.SessionInformationExpiredStrategy;
 import org.springframework.social.security.SpringSocialConfigurer;
 
 import com.wise.demo.authentication.mobile.SmsCodeAuthenticationSecurityConfig;
@@ -55,6 +58,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private SpringSocialConfigurer socialSecurityConfig;
+
+	@Autowired
+	private InvalidSessionStrategy invalidSessionStrategy;
+
+	@Autowired
+	private SessionInformationExpiredStrategy sessionInformationExpiredStrategy;
+
+	@Autowired
+	private LogoutSuccessHandler logoutSuccessHandler;
 	
 	/**
 	 * 记住我功能的 token 存取器配置
@@ -96,11 +108,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.tokenRepository(persistentTokenRepository()) // token 持久化仓库
 				.tokenValiditySeconds(securityProperties.getBrowser().getRememberMeSeconds()) // token 有效时间
 				.userDetailsService(userDetailsService) // 用户详情
-			.and()
+				.and()
+			.sessionManagement() // sessoion 管理
+				.invalidSessionStrategy(invalidSessionStrategy) // session 失效策略
+				.maximumSessions(securityProperties.getBrowser().getSession().getMaximumSessions()) // 同一用户最大session数
+				.maxSessionsPreventsLogin(securityProperties.getBrowser().getSession().isMaxSessionsPreventsLogin()) // 达到最大session数是否阻止登录，默认为false
+				.expiredSessionStrategy(sessionInformationExpiredStrategy) // 并发登录导致session失效时，默认的处理策略
+				.and()
+				.and()
+			.logout() // 登出处理
+				.logoutUrl("/signOut") // 登出请求 URL
+				.logoutSuccessHandler(logoutSuccessHandler) // 登出成功处理器
+				.deleteCookies("JSESSIONID") // 登出后删除的 Cookie
+				.and()
 		    .authorizeRequests() // 表示要进行请求授权
 		    .antMatchers(
 		    		SecurityConstants.DEFAULT_UNAUTHENTICATION_URL, // 未登录的处理请求 URL
 		    		securityProperties.getBrowser().getSignInPage(), // 登录页
+		    		securityProperties.getBrowser().getSignOutUrl(), // 登出页
 		    		securityProperties.getBrowser().getSignUpUrl(), // 注册页
 		    		SecurityConstants.DEFAULT_USER_REGIST_URL, // 注册请求 URL
 		    		SecurityConstants.DEFAULT_VALIDATE_CODE_URL_PREFIX + "/*" // 验证码请求 URL 路径

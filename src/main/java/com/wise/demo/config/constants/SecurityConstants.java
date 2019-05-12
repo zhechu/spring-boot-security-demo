@@ -37,6 +37,11 @@ public interface SecurityConstants {
 	 * @see SecurityController
 	 */
 	String DEFAULT_SIGN_IN_PAGE_URL = "/signIn.html";
+
+	/**
+	 * 默认登出页面
+	 */
+	String DEFAULT_SIGN_OUT_PAGE_URL = "/signOut.html";
 	
 	/**
 	 * 社交登录，如果需要用户注册，跳转的页面
@@ -74,5 +79,10 @@ public interface SecurityConstants {
 	 * 获取第三方用户信息的url
 	 */
 	String DEFAULT_SOCIAL_USER_INFO_URL = "/social/user";
+	
+	/**
+	 * session失效默认的跳转地址
+	 */
+	String DEFAULT_SESSION_INVALID_URL = "/session-invalid.html";
 	
 }
