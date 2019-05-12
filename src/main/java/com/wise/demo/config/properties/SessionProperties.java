@@ -29,4 +29,14 @@ public class SessionProperties {
 	 */
 	private String sessionInvalidUrl = SecurityConstants.DEFAULT_SESSION_INVALID_URL;
 
+	/**
+	 * session 的 cookie 名称
+	 */
+	private String cookieName = "WISESESSIONID";
+	
+	/**
+	 * session 的 cookie path
+	 */
+	private String cookiePath = "/";
+	
 }
