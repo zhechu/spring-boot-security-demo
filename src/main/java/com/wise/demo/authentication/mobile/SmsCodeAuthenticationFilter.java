@@ -10,7 +10,7 @@ import org.springframework.security.web.authentication.AbstractAuthenticationPro
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.util.Assert;
 
-import com.wise.demo.config.SecurityConstants;
+import com.wise.demo.config.constants.SecurityConstants;
 
 /**
  * 短信登录过滤器

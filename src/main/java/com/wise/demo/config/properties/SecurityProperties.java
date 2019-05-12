@@ -1,9 +1,11 @@
 /**
  * 
  */
-package com.wise.demo.config;
+package com.wise.demo.config.properties;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+
+import com.wise.demo.config.constants.SecurityConstants;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -27,6 +29,11 @@ public class SecurityProperties {
 	 * 浏览器环境配置
 	 */
 	private BrowserProperties browser = new BrowserProperties();
+	
+	/**
+	 * 社交登录配置
+	 */
+	private SocialProperties social = new SocialProperties();
 	
 }
 

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.context.request.ServletWebRequest;
 
-import com.wise.demo.config.SecurityConstants;
+import com.wise.demo.config.constants.SecurityConstants;
 import com.wise.demo.validate.code.AbstractValidateCodeProcessor;
 import com.wise.demo.validate.code.ValidateCode;
 

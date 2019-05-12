@@ -2,11 +2,13 @@ package com.wise.demo.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.social.security.SocialUser;
+import org.springframework.social.security.SocialUserDetails;
+import org.springframework.social.security.SocialUserDetailsService;
 import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
@@ -18,14 +20,23 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Component
 @Slf4j
-public class CustomUserDetailsService implements UserDetailsService {
+public class CustomUserDetailsService implements UserDetailsService, SocialUserDetailsService {
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		
+		return buildUser(username);
+	}
+
+	@Override
+	public SocialUserDetails loadUserByUserId(String userId) throws UsernameNotFoundException {
+		return buildUser(userId);
+	}
+
+	private SocialUserDetails buildUser(String username) {
+
 		log.info("登录用户名：{}", username);
 		
 		// 模拟获取数据库存储的密码
@@ -33,7 +44,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
 		log.info("数据库存储的密码是：{}", password);
 		
-		return new User(
+		return new SocialUser(
 				username, 
 				password, 
 				true, // 账号是否没有被删除（可以表示账号不存在）

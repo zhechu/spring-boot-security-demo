@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.ServletWebRequest;
 
-import com.wise.demo.config.SecurityProperties;
+import com.wise.demo.config.properties.SecurityProperties;
 import com.wise.demo.validate.code.ValidateCode;
 import com.wise.demo.validate.code.ValidateCodeGenerator;
 

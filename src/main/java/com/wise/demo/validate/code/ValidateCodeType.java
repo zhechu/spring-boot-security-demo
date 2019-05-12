@@ -1,6 +1,6 @@
 package com.wise.demo.validate.code;
 
-import com.wise.demo.config.SecurityConstants;
+import com.wise.demo.config.constants.SecurityConstants;
 
 /**
  * 校验码类型

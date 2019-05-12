@@ -14,8 +14,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.preauth.AbstractPreAuthenticatedProcessingFilter;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
+import org.springframework.social.security.SpringSocialConfigurer;
 
 import com.wise.demo.authentication.mobile.SmsCodeAuthenticationSecurityConfig;
+import com.wise.demo.config.constants.SecurityConstants;
+import com.wise.demo.config.properties.SecurityProperties;
 import com.wise.demo.security.CustomAuthenticationFailureHandler;
 import com.wise.demo.security.CustomAuthenticationSuccessHandler;
 import com.wise.demo.validate.code.ValidateCodeFilter;
@@ -49,6 +52,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
 	private SmsCodeAuthenticationSecurityConfig smsCodeAuthenticationSecurityConfig;
+
+	@Autowired
+	private SpringSocialConfigurer socialSecurityConfig;
 	
 	/**
 	 * 记住我功能的 token 存取器配置
@@ -77,6 +83,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //		http.httpBasic() // 开启 http basic 认证
 		http.apply(smsCodeAuthenticationSecurityConfig) // 短信验证码配置
 			.and()
+			.apply(socialSecurityConfig) // 社交登录配置
+			.and()
 			.addFilterBefore(validateCodeFilter, AbstractPreAuthenticatedProcessingFilter.class) // 验证码过滤器
 			.formLogin() // 开启表单认证
 			    .loginPage(SecurityConstants.DEFAULT_UNAUTHENTICATION_URL) // 未登录的处理
@@ -91,9 +99,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.and()
 		    .authorizeRequests() // 表示要进行请求授权
 		    .antMatchers(
-		    		SecurityConstants.DEFAULT_UNAUTHENTICATION_URL, 
-		    		SecurityConstants.DEFAULT_SIGN_IN_PAGE_URL, 
-		    		SecurityConstants.DEFAULT_VALIDATE_CODE_URL_PREFIX + "/*").permitAll() // 表示登录页不需通过权限验证
+		    		SecurityConstants.DEFAULT_UNAUTHENTICATION_URL, // 未登录的处理请求 URL
+		    		securityProperties.getBrowser().getSignInPage(), // 登录页
+		    		securityProperties.getBrowser().getSignUpUrl(), // 注册页
+		    		SecurityConstants.DEFAULT_USER_REGIST_URL, // 注册请求 URL
+		    		SecurityConstants.DEFAULT_VALIDATE_CODE_URL_PREFIX + "/*" // 验证码请求 URL 路径
+		    		).permitAll() // 表示登录页不需通过权限验证
 		    .anyRequest() // 所有请求
 		    .authenticated() // 需要认证后才能访问
 		    .and()

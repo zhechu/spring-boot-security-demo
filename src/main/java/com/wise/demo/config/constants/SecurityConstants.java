@@ -1,4 +1,4 @@
-package com.wise.demo.config;
+package com.wise.demo.config.constants;
 
 import com.wise.demo.web.controller.SecurityController;
 
@@ -39,6 +39,13 @@ public interface SecurityConstants {
 	String DEFAULT_SIGN_IN_PAGE_URL = "/signIn.html";
 	
 	/**
+	 * 社交登录，如果需要用户注册，跳转的页面
+	 * 
+	 * @see SecurityController
+	 */
+	String DEFAULT_SIGN_UP_PAGE_URL = "/signUp.html";
+	
+	/**
 	 * 验证图片验证码时，http请求中默认的携带图片验证码信息的参数的名称
 	 */
 	String DEFAULT_PARAMETER_NAME_CODE_IMAGE = "imageCode";
@@ -57,5 +64,15 @@ public interface SecurityConstants {
 	 * 默认的手机验证码登录请求处理 URL
 	 */
 	String DEFAULT_SIGN_IN_PROCESSING_URL_MOBILE = "/authentication/mobile";
+	
+	/**
+	 * 默认的用户注册 URL
+	 */
+	String DEFAULT_USER_REGIST_URL = "/regist";
+	
+	/**
+	 * 获取第三方用户信息的url
+	 */
+	String DEFAULT_SOCIAL_USER_INFO_URL = "/social/user";
 	
 }

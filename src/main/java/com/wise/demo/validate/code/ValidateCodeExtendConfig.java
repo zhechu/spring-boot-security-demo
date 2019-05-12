@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.wise.demo.config.SecurityProperties;
+import com.wise.demo.config.properties.SecurityProperties;
 import com.wise.demo.validate.code.image.ImageValidateCodeGenerator;
 import com.wise.demo.validate.code.sms.DefaultSmsValidateCodeSender;
 import com.wise.demo.validate.code.sms.SmsValidateCodeSender;

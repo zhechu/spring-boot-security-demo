@@ -9,7 +9,7 @@ import java.util.Random;
 import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.context.request.ServletWebRequest;
 
-import com.wise.demo.config.SecurityProperties;
+import com.wise.demo.config.properties.SecurityProperties;
 import com.wise.demo.validate.code.ValidateCodeGenerator;
 
 import lombok.Getter;

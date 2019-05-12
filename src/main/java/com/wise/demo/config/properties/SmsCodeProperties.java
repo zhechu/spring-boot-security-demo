@@ -1,4 +1,4 @@
-package com.wise.demo.config;
+package com.wise.demo.config.properties;
 
 import lombok.Getter;
 import lombok.Setter;

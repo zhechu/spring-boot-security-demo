@@ -1,4 +1,6 @@
-package com.wise.demo.config;
+package com.wise.demo.config.properties;
+
+import com.wise.demo.config.constants.SecurityConstants;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -18,8 +20,14 @@ public class BrowserProperties {
 	private String signInPage = SecurityConstants.DEFAULT_SIGN_IN_PAGE_URL;
 	
 	/**
+	 * 社交登录，如果需要用户注册，跳转的页面
+	 */
+	private String signUpUrl = SecurityConstants.DEFAULT_SIGN_UP_PAGE_URL;
+	
+	/**
 	 * '记住我'功能的有效时间，默认1小时
 	 */
 	private int rememberMeSeconds = 3600;
+	
 	
 }

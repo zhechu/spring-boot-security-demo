@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.ServletWebRequest;
 
-import com.wise.demo.config.SecurityConstants;
+import com.wise.demo.config.constants.SecurityConstants;
 
 /**
  *  生成校验码控制器

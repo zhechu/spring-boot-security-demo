@@ -19,8 +19,8 @@ import org.springframework.util.AntPathMatcher;
 import org.springframework.web.context.request.ServletWebRequest;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.wise.demo.config.SecurityConstants;
-import com.wise.demo.config.SecurityProperties;
+import com.wise.demo.config.constants.SecurityConstants;
+import com.wise.demo.config.properties.SecurityProperties;
 
 import lombok.extern.slf4j.Slf4j;
 
