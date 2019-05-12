@@ -33,6 +33,10 @@ public class WeixinAutoConfig extends SocialAutoConfigurerAdapter {
 				weixinConfig.getAppSecret());
 	}
 	
+	/**
+	 * 微信绑定结果视图
+	 * @return
+	 */
 	@Bean({"connect/weixinConnect", "connect/weixinConnected"})
 	@ConditionalOnMissingBean(name = "weixinConnectedView")
 	public View weixinConnectedView() {
